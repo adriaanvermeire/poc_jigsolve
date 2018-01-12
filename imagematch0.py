@@ -1,10 +1,15 @@
 import cv2
 import os
 
+# TODO: get images from commandline
+# TODO: use mask in matchTemplate for srcImg
+
+
 if __name__ == '__main__':
-    # TODO: get images from commandline
     srcImg = 'image.JPG'
-    patternImg = 'pattern.JPG'
+    patternImg = 'faulty.JPG'
+    matchImg = 'match.jpeg'
+
     if(os.path.isfile(srcImg) and os.path.isfile(patternImg)):
         source = cv2.imread(srcImg)
         pattern = cv2.imread(patternImg)
@@ -29,4 +34,4 @@ if __name__ == '__main__':
     lowerRight = (minLoc[0] + patternWidth, minLoc[1] + patternHeight)
     cv2.rectangle(match, upperLeft, lowerRight, (255,0,0), 1)
 
-    cv2.imwrite('match.jpeg', match)
+    cv2.imwrite(matchImg, match)
