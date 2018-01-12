@@ -27,6 +27,6 @@ if __name__ == '__main__':
     # and lowerright corner (calculated with pattern's width and height)
     upperLeft = minLoc
     lowerRight = (minLoc[0] + patternWidth, minLoc[1] + patternHeight)
-    cv2.rectangle(match, upperLeft, lowerRight, (255,0,0), -1)
+    cv2.rectangle(match, upperLeft, lowerRight, (255,0,0), 1)
 
     cv2.imwrite('match.jpeg', match)
