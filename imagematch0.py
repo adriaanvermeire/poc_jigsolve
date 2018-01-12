@@ -1,9 +1,16 @@
 import cv2
+import os
+
 if __name__ == '__main__':
     # TODO: get images from commandline
-    source = cv2.imread('image.jpeg')
-    pattern = cv2.imread('black.JPG')
-    match = cv2.imread('image.jpeg')
+    srcImg = 'image.JPG'
+    patternImg = 'pattern.JPG'
+    if(os.path.isfile(srcImg) and os.path.isfile(patternImg)):
+        source = cv2.imread(srcImg)
+        pattern = cv2.imread(patternImg)
+        match = cv2.imread(srcImg)
+    else:
+        raise ValueError
 
     # img.shape returns tuple (height, width, # color channels (usually 3))
     # [:2] limits the tuple returned to the first 2 (ignoring the color channels)
