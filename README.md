@@ -141,4 +141,41 @@ Ik kon nog 1 ding proberen dat het misschien zou oplossen, of toch op z'n minst 
 ### Rechttrekken referentie
 Dit was op zich niet zo'n moeilijke opgave, maar wegens tijdsdruk hebben een aantal blogposts op het web me toch moeten helpen.
 
-Eerst
+Eerst ga je met een canny edge filter over de afbeeldingen om alle randen in de afbeelding te zoeken.
+
+![](Verslag/close_up_canny.jpg)
+> Close-up van het resultaat van de canny edge filter
+
+Vervolgens neem je de randen van de canny edge filter en zoek je hierop de contouren met de eerder gebruikte cv::findContours() functie.
+Vervolgens filteren we weer de allergrootsten er uit. Maar hoe zouden we nu de grote rechthoek er uit kunnen halen?
+
+Een rechthoek bestaat altijd uit 4 hoeken, dus gaat de contour die deze rechthoek beschrijft ook slecht 4 punten hebben. Als we daarop nog eens filteren hebben we de uiteindelijke contour voor de afbeelding:
+
+![](Verslag/contour_ex.JPG)
+
+> De contour is te zien in het geel
+
+Nu moeten we deze scheve rechthoek alleen nog maar rechttrekken naar de hoeken van de afbeelding en dan hebben de referentie afbeelding recht getrokken!
+
+Hiervoor gebruikte ik de functies van onderstaande blogposts die specifiek over het maken van document scanner gaat.
+- https://www.pyimagesearch.com/2014/08/25/4-point-opencv-getperspective-transform-example/
+- https://www.pyimagesearch.com/2014/09/01/build-kick-ass-mobile-document-scanner-just-5-minutes/
+
+Het resultaat hiervan is dit, een mooie vlakke referentie afbeelding:
+
+![](Verslag/flatten.JPG)
+
+Hoe mooi dit allemaal mag zijn uitgedraaid voor de referentie afbeelding, het vinden van puzzelstukken in de afbeelding werd niet beter.
+
+### Conclusie
+Ik ben tot op heden nog geen betere oplossing tegengekomen, maar mijn vermoeden is dat het ligt aan de lage resolutie van de foto's, de slechte belichting en de vorm van de puzzelstukken.
+Wanneer het gedaan wordt met digitaal uitgesneden stukken afbeelding en de bron afbeelding is er een groter succes percentage dan wanneer er handgemaakte foto's worden gebruikt.
+
+Ik vond het zeer tof om eens dieper in iets te gaan en me helemaal toe te wijden aan de wereld van het puzzelen.
+
+Eén quote die me bijgebleven is uit het lezen van de papers is de deze van Goldberg uit _A global approach to automatic solution of jigsaw puzzles_:
+> The real
+interest in jigsaw puzzle solving is simply that it is a natural and challenging problem that
+catches people’s imaginations.
+
+De quote zegt perfect wat ik vond van het opzoeken en onderzoeken over dit probleem. Het is uiteindelijk niet gelukt, maar ik heb er veel uit geleerd en het was interessant!
